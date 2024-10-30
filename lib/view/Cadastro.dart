@@ -54,12 +54,10 @@ class Cadastro extends StatelessWidget {
               ),
             ),
             TextButton(
-              style: ButtonStyle(),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+              ),
               onPressed: () async {
-                /* var name;
-                var email;
-                var password; */
-
                 var client = http.Client();
                 var url = 'http://10.92.198.38:4000/user/cadastro';
                 var bodyRegistro = {
