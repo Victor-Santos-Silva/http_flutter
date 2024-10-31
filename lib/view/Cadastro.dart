@@ -8,78 +8,109 @@ class Cadastro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              child: Center(
-                child: Text(
-                  "Cadastro",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+      //cor de fundo
+      backgroundColor: Color(0xff9be2b3),
+      body: Column(
+        // centralizando no meio do app
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Cadastro
+          Container(
+            height: 80,
+            child: Center(
+              child: Text(
+                "Cadastro",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+
+          //Nome
+          Container(
+            width: 350,
+            height: 80,
+            child: TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
                   ),
                 ),
-              ),
-            ),
-            Container(
-              width: 500,
-              height: 60,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Nome',
+                hintText: 'Nome:',
+                hintStyle: TextStyle(
+                  color: Colors.black,
                 ),
               ),
             ),
-            Container(
-              width: 500,
-              height: 60,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Email',
-                ),
-              ),
+          ),
+
+          //Email
+          Container(
+            width: 350,
+            height: 80,
+            child: TextField(
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                  hintText: 'Email:',
+                  hintStyle: TextStyle(color: Colors.black)),
             ),
-            Container(
-              height: 60,
-              width: 500,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Senha',
-                ),
-              ),
+          ),
+
+          //Senha
+          Container(
+            height: 80,
+            width: 350,
+            child: TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.black,
+                    ),
+                  ),
+                  hintText: 'Senha:',
+                  hintStyle: TextStyle(color: Colors.black)),
             ),
-            TextButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
-              ),
-              onPressed: () async {
-                var client = http.Client();
-                var url = 'http://10.92.198.38:4000/user/cadastro';
-                var bodyRegistro = {
-                  "name": "Victor dos Santos",
-                  "email": "victor@email.com",
-                  "password": "adminadmin",
-                };
-                try {
-                  var response = await client.post(Uri.parse(url),
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: json.encode(bodyRegistro));
-                  print(response.body);
-                } finally {
-                  client.close();
-                }
-              },
-              child: Text('Cadastrar'),
-            )
-          ],
-        ),
+          ),
+
+          //Botao
+          TextButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xff478b61),
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.all(15)
+            ),
+            onPressed: () async {
+              var client = http.Client();
+              var url = 'http://10.92.198.38:4000/user/cadastro';
+              var bodyRegistro = {
+                "name": "Victor dos Santos",
+                "email": "victor@email.com",
+                "password": "adminadmin",
+              };
+              try {
+                var response = await client.post(Uri.parse(url),
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: json.encode(bodyRegistro));
+                print(response.body);
+              } finally {
+                client.close();
+              }
+            },
+            child: Text('Cadastrar'),
+          )
+        ],
       ),
     );
   }
