@@ -1,4 +1,5 @@
 import 'package:aula_http_flutter/view/Cadastro.dart';
+import 'package:aula_http_flutter/view/Login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Cadastro(),
+      home: Login(),
     );
   }
 }

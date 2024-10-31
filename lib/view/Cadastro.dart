@@ -72,23 +72,23 @@ class Cadastro extends StatelessWidget {
             child: TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                    ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
                   ),
-                  hintText: 'Senha:',
-                  hintStyle: TextStyle(color: Colors.black)),
+                ),
+                hintText: 'Senha:',
+                hintStyle: TextStyle(color: Colors.black),
+              ),
             ),
           ),
 
           //Botao
           TextButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xff478b61),
-              foregroundColor: Colors.white,
-              padding: EdgeInsets.all(15)
-            ),
+                backgroundColor: Color(0xff478b61),
+                foregroundColor: Colors.white,
+                padding: EdgeInsets.all(15)),
             onPressed: () async {
               var client = http.Client();
               var url = 'http://10.92.198.38:4000/user/cadastro';
